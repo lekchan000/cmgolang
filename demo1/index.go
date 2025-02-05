@@ -5,5 +5,6 @@ import (
 )
 
 func main() {
-	fmt.Println("Hello Golang")
+	var msg string = "CodeMobiles"
+	fmt.Println(msg)
 }
