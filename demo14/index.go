@@ -15,11 +15,20 @@ func main() {
 	pa1.stock = 50
 
 	showProduct(pa1)
-	updateProduct(&pa1)
+	//updateProduct(&pa1)
+	pa1.ClearProduct()
+	showProduct(pa1)
 }
 
 func showProduct(pa1 product) {
 	fmt.Println(pa1)
+}
+
+func (p product) ClearProduct() product {
+	p.name = ""
+	p.price = 0
+	p.stock = 0
+	return p
 }
 
 func updateProduct(pa1 *product) {
