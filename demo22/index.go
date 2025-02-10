@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func task(c, quit chan string) {
 	for {
@@ -9,7 +12,8 @@ func task(c, quit chan string) {
 		case <-quit:
 			fmt.Println("quit")
 			return
-
+		default:
+			time.Sleep(50 * time.Millisecond)
 		}
 	}
 }
@@ -21,7 +25,7 @@ func main() {
 		for i := 0; i < 10; i++ {
 			fmt.Println(<-c)
 		}
-		quit <- "done"
+		// quit <- "done"
 	}()
 
 	task(c, quit)
