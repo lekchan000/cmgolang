@@ -17,6 +17,12 @@ func GetHello(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"message": "Hello World!"})
 }
 
+func GetUser(c *gin.Context) {
+	username := c.Query("username")
+	password := c.Query("password")
+	c.JSON(http.StatusOK, gin.H{"username": username, "password": password})
+}
+
 // ----------------------------------------------
 func PostUser(c *gin.Context) {
 	var user User
@@ -28,9 +34,16 @@ func PostUser(c *gin.Context) {
 }
 
 // ----------------------------------------------
+func PutPathParams(c *gin.Context) {
+	user := c.Param("user")
+	c.JSON(http.StatusOK, gin.H{"message": user})
+}
+
+// ----------------------------------------------
 func main() {
 	r := gin.Default()
 	r.GET("/", GetHello)
+	r.GET("/user", GetUser)
 	r.POST("/", PostUser)
 	r.Run()
 }
